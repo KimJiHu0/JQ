@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>화이팅!</title>
+
+<style type="text/css">
+
+	.box{
+		width: 150px;
+		height: 150px;
+		border: 1px solid pink;
+		padding: 20px;
+	}
+	.bgSpan{
+		width: 20px;
+		height: 20px;
+		background: yellow;
+	}
+	
+	.bgBox{
+		width: 30px;
+		height: 20px;
+		background: pink;
+		margin:20px;
+		float: left;
+	}
+
+	#cellTable{
+		border-collapse: collapse;
+	}
+	#cellTable tr,#cellTable td{
+		padding: 30px;
+		text-align: center;
+	}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+
+	<h1>jQuery Test</h1>
+	
+	<script type="text/javascript">
+	$(function(){
+		$("button:eq(0)").click(function(){
+			$(".box").eq(0).css("background-color", "pink");
+		});
+	})
+	</script>
+	<fieldset>
+		<legend>문제 1</legend>
+		<h3>다음 div의 배경색을 pink로 넣어 주세요</h3>
+		<div class="box"></div>
+		<button>클릭</button>
+	</fieldset>
+	
+	<script type="text/javascript">
+	$(function(){
+		$("button:eq(1)").click(function(){
+			// class이름이 bgSpan인 애의 0번지인애를 clone해줘서 appendTo해준다
+			// class이름이 box인 애 중 1번지에 있는애한테
+			$(".bgSpan:eq(0)").clone().appendTo('.box:eq(1)')
+		})
+	})
+	</script>
+	<fieldset>
+		<legend>문제 2</legend>
+		<h3>span 태그를 복사해서 추가해 주세요</h3>
+		<h5>(clone()을 사용해 주세요)</h5>
+		<div class="box">
+			<span class="bgSpan">abc</span>
+		</div>
+		<button>클릭</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("button:eq(2)").click(function(){
+				$("button:eq(2)").attr('disabled', true);
+			})
+		})
+	</script>
+	<fieldset>
+		<legend>문제 3</legend>
+		<h3>button을 disable 로 변경해 주세요 </h3>
+		<button>클릭</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("button:eq(3)").click(function(){
+				$("span:eq(1)").appendTo("div:eq(3)")
+			})
+		})
+	</script>
+	<fieldset>
+		<legend>문제 4</legend>
+		<h3>첫번째 div 안의 span 태그를 두번째 div로 이동시켜 주세요</h3>
+		<div class="box">
+			<span class="bgSpan">abc</span>
+		</div><br/>
+		<div class="box"></div>
+		<button>클릭</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("button:eq(4)").click(function(){
+				
+				var cnt = 0;
+				var color = "yellow";
+				
+				// 2초에 한번씩 실행
+				setInterval(function(){
+					if(cnt%2 == 0){
+						color = "pink";
+					} else {
+						color = "yellow";
+					}
+					$("div:eq(4)").children().eq(0).css("background", color);
+					cnt++;
+				}, 2000)
+			})
+		})
+	</script>
+	<fieldset>
+		<legend>문제 5</legend>
+		<h3>2초마다 div의 자식요소인 span 태그의 배경색을 pink/yellow로 바꿔주세요</h3>
+		<div class="box">
+			<span class="bgSpan">abc</span>
+		</div>
+		<button>클릭</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			   $('button:eq(5)').click(function(){
+				      $('select option:nth-child(odd)').css('background-color','pink');
+				   });
+		})
+	</script>
+	<fieldset>
+		<legend>문제 6</legend>
+		<h3>select 태그의 option 중, 홀수(odd)만 pink로 배경색을 주세요</h3>
+		<select multiple="multiple">
+			<option>option1(odd)</option>
+			<option>option2(even)</option>
+			<option>option3(odd)</option>
+			<option>option4(even)</option>
+		</select>
+		<button>클릭</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("button:eq(6)").click(function(){
+				var i = 1;
+				setInterval(function(){
+					$("input:eq(0)").val(i);
+					i++
+				}, 1000)
+			})
+		})
+	</script>
+	<fieldset>
+		<legend>문제 7</legend>
+		<h3>input 태그의 값 1초 간격으로 1씩 증가시켜 주세요.</h3>
+		<input type="text" value="0" size="6"/>
+		<button>클릭</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("button:eq(7)").click(function(){
+				$("div:eq(5)").children().remove();
+			})
+		})
+	</script>
+	<fieldset>
+		<legend>문제 8</legend>
+		<h3>다음 div의 자식 요소들을 모두 삭제해 주세요.</h3>
+		<div class="box">
+			<span>자식1</span><br/>
+			<p>자식2</p>
+			<p>
+				<p>자손1</p>
+			</p>
+		</div>
+		<button>클릭</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("button:eq(8)").click(function(){
+				$("div:eq(6)").children(":contains(bold)").css("font-weight", "bold");
+			})
+		})
+	</script>
+	<fieldset>
+		<legend>문제 9</legend>
+		<h3>"bold" 라는 텍스트가 포함되어 있는 엘리먼트의 텍스트에 bold효과를 적용해주세요.</h3>
+		<div class="box">
+			<span>bold</span><br/>
+			<span>strike</span><br/>
+			<span>blink</span>
+		</div>
+		<br/>
+		<button>버튼</button>
+	</fieldset>
+	
+	
+	<script type="text/javascript">
+		$(function(){
+			$("button:eq(9)").click(function(){
+				$("div:eq(7)").children("span").html("ABC");
+			})
+		})
+	</script>
+	<fieldset>
+		<legend>문제 10</legend>
+		<h3>div 안의 "ABCDEF"를 "ABC"로 변경해 주세요.</h3>
+		<div class="box">
+			<span class="bgSpan">ABCDEF</span>
+		</div>
+		<br/>
+		<button>버튼</button>
+	</fieldset>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
